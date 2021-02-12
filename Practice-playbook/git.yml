@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install git on all the node machine
+      apt:
+        name: git
+        state: present
+        
