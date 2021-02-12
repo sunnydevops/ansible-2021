@@ -1,0 +1,8 @@
+---
+- hosts: web
+  become: true
+  tasks:
+    - name: Install apache on web server
+      apt:
+        name: apache
+        state: present
