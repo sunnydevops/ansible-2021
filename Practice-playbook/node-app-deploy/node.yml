@@ -1,0 +1,29 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Upate Linux machine
+      apt:
+        update_cache: yes
+
+# Install Node Js on a particuler server
+# ref: https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-16-04
+
+- hosts: app
+  become: yes
+  vars:
+    folderpath: /home/ansible/nodesetup
+  tasks:
+    - name: create a directory
+      path: "{{folderpath}}"
+      state: directory
+      mode: 0755
+    - name: downloas shell file
+      command: "curl -sL https://deb.nodesource.com/setup_8.x -o {{folderpath}}/nodesource_setup.sh"
+    - name: execute setup.sh file
+      command: sudo bash {{folderpath}}/nodesource_setup.sh
+    - name: install node js
+      apt:
+        name: nodejs
+        state: present
+
