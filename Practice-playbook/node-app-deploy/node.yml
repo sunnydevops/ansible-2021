@@ -61,7 +61,7 @@
         src: templates/default.js
         dest: "{{ defaultjs }}"
       notify: restart nginx
-    handlers:
+  handlers:
     - name: restart nginx
       service:
         name: nginx
