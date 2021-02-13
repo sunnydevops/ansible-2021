@@ -1,0 +1,16 @@
+---
+hosts: all
+become: yes
+tasks:
+  - name: install webserver
+    package:
+      name: "{{package_name}}"
+      state: present
+  - name: update Debian Machine
+    apt:
+      update_cache: yes   # update_cache is similar to "apt-get update"
+    when: ansible_os_family == "Debian"   # when condition in ansible 
+  - name: Update Redhat Machine
+    yum:
+      update_cache: yes
+    when: ansible_os_family == "Redhat"
