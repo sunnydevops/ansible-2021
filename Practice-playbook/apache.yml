@@ -1,5 +1,5 @@
 ---
-- hosts: web
+- hosts: ubuntu
   become: true
   tasks:
     - name: Install apache on web server
