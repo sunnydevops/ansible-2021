@@ -1,0 +1,10 @@
+---
+package_name: httpd
+
+
+# List all the package which want to install on centos
+
+utilities:
+  - git
+  - tree
+  - nano

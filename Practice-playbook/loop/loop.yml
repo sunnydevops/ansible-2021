@@ -1,0 +1,21 @@
+---
+hosts: all
+become: yes
+tasks:
+  - name: install webserver
+    package:
+      name: "{{package_name}}"
+      state: present
+  - name: Install package   # This is first way to install package
+    package:
+      name: "{{item}}"
+      state: present
+    with_items: utilities  # "utilities" is a variable that hs defiend under /inventory/grop_vars/ubuntu.yml and centos.yml
+
+  - name: Install Package # This is another way
+    package:
+      name: "{{item}}"
+    with_items:
+      - git
+      - tree
+      - nano

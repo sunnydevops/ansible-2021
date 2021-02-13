@@ -1,0 +1,9 @@
+---
+package_name: apache2
+
+# List all the package which want to install on ubuntu
+
+utilities:
+  - git
+  - tree
+  - nano
