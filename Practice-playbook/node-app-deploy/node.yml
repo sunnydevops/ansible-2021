@@ -50,9 +50,21 @@
   vars:
     webserver_dns_name: 10.20.30.40
     appserver_ip: 20.30.40.50
+    defaultjs: /etc/nginx/sites-available/default
   tasks:
     - name: install nginx
       apt:
         name: nginx
         state: present
+    - name: copy default.js
+      template:
+        src: templates/default.js
+        dest: "{{ defaultjs }}"
+      notify: restart nginx
+    handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+        
 
