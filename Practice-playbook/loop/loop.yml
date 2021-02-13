@@ -10,7 +10,7 @@ tasks:
     package:
       name: "{{item}}"
       state: present
-    with_items: utilities  # "utilities" is a variable that hs defiend under /inventory/grop_vars/ubuntu.yml and centos.yml
+    with_items: utilities  # "utilities" is a variable that is defiend under /inventory/grop_vars/ubuntu.yml and centos.yml
 
   - name: Install Package # This is another way
     package:
