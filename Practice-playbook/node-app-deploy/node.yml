@@ -2,8 +2,11 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Upate Linux machine
+    - name: Upate Debian machine
       apt:
+        update_cache: yes
+    - name: Update Redhat machine
+      yum:
         update_cache: yes
 
 # Install Node Js on a particuler server
