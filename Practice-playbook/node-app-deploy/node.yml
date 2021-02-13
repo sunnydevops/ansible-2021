@@ -18,7 +18,7 @@
       file:
         path: "{{folderpath}}"
         state: directory
-      mode: 0755
+        mode: 0755
     - name: downloas shell file
       command: "curl -sL https://deb.nodesource.com/setup_8.x -o {{folderpath}}/nodesource_setup.sh"
     - name: execute setup.sh file
