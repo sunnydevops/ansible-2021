@@ -1,2 +1,10 @@
 ---
 # tasks file for webserver
+- name: install nginx
+  apt:
+    name: nginx
+    state: present
+- name: copy default.js
+  template:
+    src: templates/default.js
+    dest: "{{ defaultjs }}"

@@ -1,2 +1,5 @@
 ---
 # defaults file for webserver
+webserver_dns_name: 35.224.74.111
+appserver_ip: 10.128.0.7
+defaultjs: /etc/nginx/sites-available/default
