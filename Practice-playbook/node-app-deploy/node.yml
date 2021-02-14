@@ -30,4 +30,41 @@
       apt:
         name: nodejs
         state: present
+    - name: copy the code
+      template: 
+        src: "templates/hello.js.j2"
+        dest: "{{folderpath}}/hello.js"
+
+
+    - name: Install pm2
+      npm:
+        name: pm2
+        global: yes
+        state: present
+    - name: start node js apps
+      command: "pm2 start {{folderpath}}/hello.js"
+
+
+- hosts: web
+  become: yes
+  vars:
+    webserver_dns_name: 10.20.30.40
+    appserver_ip: 20.30.40.50
+    defaultjs: /etc/nginx/sites-available/default
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present
+    - name: copy default.js
+      template:
+        src: templates/default.js
+        dest: "{{ defaultjs }}"
+      notify: restart nginx
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
+        
 
