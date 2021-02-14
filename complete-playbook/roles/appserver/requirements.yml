@@ -1,4 +1,4 @@
 # from galaxy from redis server
 - src: geerlingguy.redis
 # from galaxy from monodb
-- src: manala.roles
+- src: undergreen.mongodb
